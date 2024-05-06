@@ -14,7 +14,7 @@ pipeline {
         stage('Test Report') {
             steps {
                 bat 'mvn surefire-report:report --fail-never'
-                bat 'mvn javadoc:doc --fail-never'
+                bat 'mvn javadoc:jar --fail-never'
             }
         }
     }

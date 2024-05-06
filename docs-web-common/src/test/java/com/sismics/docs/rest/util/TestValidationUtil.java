@@ -8,7 +8,7 @@ import org.junit.Test;
 /**
  * Test the validations.
  *
- * @author jtremeaux 
+ * @author jtremeaux
  */
 public class TestValidationUtil {
     @Test
@@ -18,6 +18,12 @@ public class TestValidationUtil {
         ValidationUtil.validateHttpUrl(" https://www.google.com ", "url");
         try {
             ValidationUtil.validateHttpUrl("ftp://www.google.com", "url");
+            Assert.fail();
+        } catch (ClientException e) {
+            // NOP
+        }
+        try {
+            ValidationUtil.validateRequired(null, "name");
             Assert.fail();
         } catch (ClientException e) {
             // NOP

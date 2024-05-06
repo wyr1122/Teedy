@@ -11,9 +11,10 @@ pipeline {
                 bat 'mvn pmd:pmd'
             }
         }
-        stage('Test') {
+        stage('Test Report') {
             steps {
                 bat 'mvn surefire-report:report'
+                bat 'mvn javadoc:javadoc --fail-never'
             }
         }
     }

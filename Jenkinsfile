@@ -13,14 +13,15 @@ pipeline {
         }
         stage('Test Report') {
             steps {
-                bat 'mvn surefire-report:report'
-                bat 'mvn javadoc:javadoc --fail-never'
+                bat 'mvn surefire-report:report --fail-never'
+                bat 'mvn javadoc:doc --fail-never'
             }
         }
     }
     post{
         always {
-            archiveArtifacts artifacts: '**/target/site/**', fingerprint: true
+            archiveArtifacts artifacts: '**/target/site/surefire-report.html', fingerprint: true
+            archiveArtifacts artifacts: '**/target/site/pmd.html', fingerprint: true
             archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
             archiveArtifacts artifacts: '**/target/**/*.war', fingerprint: true
        }

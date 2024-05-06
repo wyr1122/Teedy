@@ -11,12 +11,12 @@ pipeline {
                 bat 'mvn pmd:pmd'
             }
         }
-         post {
-             always {
-                 archiveArtifacts artifacts: '**/target/site/**', fingerprint: true
-                 archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
-                 archiveArtifacts artifacts: '**/target/**/*.war', fingerprint: true
-             }
-        }
     }
+    post{
+        always {
+            archiveArtifacts artifacts: '**/target/site/**', fingerprint: true
+            archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
+            archiveArtifacts artifacts: '**/target/**/*.war', fingerprint: true
+       }
+   }
 }

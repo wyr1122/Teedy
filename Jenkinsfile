@@ -6,5 +6,10 @@ pipeline {
                 bat 'mvn -B -DskipTests clean package'
             }
         }
+        stage('pmd') {
+            steps {
+                bat 'mvn pmd:pmd'
+            }
+        }
     }
 }

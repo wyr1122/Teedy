@@ -11,6 +11,11 @@ pipeline {
                 bat 'mvn pmd:pmd'
             }
         }
+        stage('Test') {
+            steps {
+                bat 'mvn surefire-report:report'
+            }
+        }
     }
     post{
         always {
